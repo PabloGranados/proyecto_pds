@@ -18,7 +18,7 @@ async function sendToOpenRouter(message) {
 IMPORTANTE:
 - NO eres un terapeuta ni das diagnósticos
 - SIEMPRE recomienda buscar ayuda profesional si es necesario
-- Si detectas riesgo de autolesión, sugiere líneas de crisis: SAPTEL (800 472 7835) o Línea de la Vida (800 911 2000)
+- Si detectas riesgo de autolesión, sugiere líneas de crisis: SAPTEL ((55) 5259 8121) o Línea de la Vida (800 911 2000)
 - Usa un tono cálido, empático y esperanzador
 - Respuestas máximo 150 palabras
 - Enfócate en el bienestar y la esperanza
@@ -61,7 +61,7 @@ Responde en español de manera natural y comprensiva.`;
         
         // Respuesta de fallback si la API falla
         const fallbackResponse = {
-            reply: "Lo siento, tengo dificultades técnicas en este momento. Sin embargo, quiero que sepas que no estás solo/a. Si necesitas ayuda inmediata, puedes contactar SAPTEL al 800 472 7835 o la Línea de la Vida al 800 911 2000. Tu bienestar es importante. 💙",
+            reply: "Lo siento, tengo dificultades técnicas en este momento. Sin embargo, quiero que sepas que no estás solo/a. Si necesitas ayuda inmediata, puedes contactar SAPTEL al (55) 5259 8121 o la Línea de la Vida al 800 911 2000. Tu bienestar es importante. 💙",
             timestamp: new Date().toISOString(),
             status: 'fallback'
         };

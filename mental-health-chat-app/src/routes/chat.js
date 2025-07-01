@@ -42,7 +42,7 @@ router.post('/', validateMessage, async (req, res) => {
         console.error('Error en chat route:', err);
         
         res.status(500).json({ 
-            error: 'Lo siento, no puedo responder en este momento. Si necesitas ayuda inmediata, contacta SAPTEL al 800 472 7835.',
+            error: 'Lo siento, no puedo responder en este momento. Si necesitas ayuda inmediata, contacta SAPTEL al (55) 5259 8121.',
             status: 'error',
             timestamp: new Date().toISOString()
         });
