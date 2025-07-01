@@ -599,6 +599,59 @@
         .navbar-toggler:focus {
             box-shadow: none;
         }
+
+        /* Estilos para botones de herramientas rápidas */
+        .tool-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #c7b8ea 0%, #a8d8ea 100%);
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(199, 184, 234, 0.3);
+            border: none;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        .tool-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(199, 184, 234, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .tool-button i {
+            font-size: 1.3rem;
+        }
+
+        .tool-button.games {
+            background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+        }
+
+        .tool-button.diary {
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+        }
+
+        .tool-button.altruist {
+            background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
+        }
+
+        .tools-section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.8);
+            margin: 60px 0;
+            border-radius: 40px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 50px rgba(139, 122, 184, 0.1);
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -700,7 +753,7 @@
                         <i class="fas fa-brain"></i>
                     </div>
                     
-                    <a href="#secciones" class="cta-button">Comenzar mi bienestar</a>
+                    <a href="#herramientas-rapidas" class="cta-button">Comenzar mi bienestar</a>
                 </div>
             </section>
 
@@ -711,6 +764,71 @@
                         "No tienes que tener todo resuelto para estar en paz."
                     </div>
                     <div class="quote-author">Frase del día</div>
+                </div>
+            </section>
+
+            <!-- Herramientas Rápidas Section -->
+            <section id="herramientas-rapidas" class="tools-section">
+                <div class="container">
+                    <h2 class="section-title">Herramientas de Bienestar</h2>
+                    <p class="lead text-center mb-5" style="font-size: 1.2rem; color: #6b5b95; max-width: 600px; margin: 0 auto 40px;">
+                        Explora nuestras herramientas interactivas diseñadas para acompañarte en tu proceso de bienestar mental
+                    </p>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                                <a href="juegos.html" class="tool-button games">
+                                    <i class="fas fa-gamepad"></i>
+                                    <span>Juegos Terapéuticos</span>
+                                </a>
+                                <a href="gratitud.html" class="tool-button diary">
+                                    <i class="fas fa-feather-alt"></i>
+                                    <span>Diario de Gratitud</span>
+                                </a>
+                                <a href="altruista.html" class="tool-button altruist">
+                                    <i class="fas fa-hands-helping"></i>
+                                    <span>Actividades Altruistas</span>
+                                </a>
+                            </div>
+                            
+                            <div class="row mt-5">
+                                <div class="col-md-4 mb-3">
+                                    <div class="feature-card h-100" onclick="window.location.href='respiracion.html'" style="cursor: pointer;">
+                                        <div class="feature-icon" style="background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);">
+                                            <i class="fas fa-lungs"></i>
+                                        </div>
+                                        <h4>Respiración Guiada</h4>
+                                        <p>Técnicas de respiración para reducir el estrés y la ansiedad</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="feature-card h-100" onclick="window.location.href='mindfulness.html'" style="cursor: pointer;">
+                                        <div class="feature-icon" style="background: linear-gradient(135deg, #DDA0DD 0%, #9370DB 100%);">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <h4>Mindfulness Visual</h4>
+                                        <p>Ejercicios de atención plena y conciencia del momento presente</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="feature-card h-100" onclick="window.location.href='afirmaciones.html'" style="cursor: pointer;">
+                                        <div class="feature-icon" style="background: linear-gradient(135deg, #F0E68C 0%, #DAA520 100%);">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <h4>Afirmaciones Positivas</h4>
+                                        <p>Frases motivacionales para fortalecer tu autoestima y confianza</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <a href="test.html" class="cta-button" style="background: linear-gradient(135deg, #8b7ab8 0%, #6b5b95 100%);">
+                                    <i class="fas fa-clipboard-check"></i> Evaluar mi Bienestar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -914,6 +1032,12 @@
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <div class="mt-5 mb-4">
+                            <h4 style="text-align: center; color: #8b7ab8; font-size: 1.4rem; margin-bottom: 30px;">
+                                <i class="fas fa-search"></i> También puedes buscar apoyo en...
+                            </h4>
                         </div>
                         
                         <div class="row mt-4">
