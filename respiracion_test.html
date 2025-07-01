@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respiración Consciente - Cuida Tu Mente</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* === ESTILO BASE CUIDA TU MENTE === */
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f8f3ff 0%, #fff5f8 50%, #f0f8ff 100%);
+            color: #4a4a4a;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Formas flotantes animadas */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background: #c7b8ea;
+            top: 10%;
+            left: 10%;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: #ffb3d9;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: #a8d8ea;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(180deg); }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        header {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(199, 184, 234, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8b7ab8 !important;
+            text-shadow: 2px 2px 4px rgba(139, 122, 184, 0.2);
+        }
+
+        .navbar-nav .nav-link {
+            color: #6b5b95 !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 15px !important;
+            border-radius: 20px;
+            margin: 0 5px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: rgba(199, 184, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* === NAVEGACIÓN MEJORADA === */
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%);
+            color: white !important;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(139, 122, 184, 0.4);
+        }
+
+        .dropdown-menu {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(199, 184, 234, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(139, 122, 184, 0.2);
+            padding: 10px 5px;
+        }
+
+        .dropdown-item {
+            color: #6b5b95;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin: 2px 5px;
+            padding: 8px 15px;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(199, 184, 234, 0.2);
+            color: #8b7ab8;
+            transform: translateX(5px);
+        }
+
+        .dropdown-item.active {
+            background: linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%);
+            color: white;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            margin-right: 8px;
+        }
+
+        /* Títulos principales */
+        .main-title {
+            font-size: 3rem;
+            color: #8b7ab8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6b5b95;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Contenedores principales */
+        .main-container {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(199, 184, 234, 0.2);
+        }
+
+        /* === ESTILOS DEL JUEGO DE RESPIRACIÓN === */
+        
+        .breathing-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .breathing-circle {
+            width: 300px;
+            height: 300px;
+            border: 4px solid #c7b8ea;
+            border-radius: 50%;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle, rgba(199, 184, 234, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
+            transition: all 2s ease;
+        }
+
+        .breathing-circle.inhale {
+            transform: scale(1.3);
+            background: radial-gradient(circle, rgba(168, 216, 234, 0.3) 0%, rgba(199, 184, 234, 0.3) 100%);
+            box-shadow: 0 0 30px rgba(199, 184, 234, 0.5);
+        }
+
+        .breathing-circle.exhale {
+            transform: scale(0.8);
+            background: radial-gradient(circle, rgba(255, 179, 217, 0.3) 0%, rgba(199, 184, 234, 0.3) 100%);
+            box-shadow: 0 0 15px rgba(255, 179, 217, 0.3);
+        }
+
+        .breathing-text {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #8b7ab8;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .phase-instruction {
+            font-size: 1.5rem;
+            color: #6b5b95;
+            margin-bottom: 20px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .controls {
+            margin: 30px 0;
+        }
+
+        .breath-button {
+            background: linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            box-shadow: 0 5px 15px rgba(139, 122, 184, 0.3);
+        }
+
+        .breath-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 122, 184, 0.4);
+        }
+
+        .breath-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .session-stats {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px 0;
+            border: 2px solid rgba(199, 184, 234, 0.3);
+        }
+
+        .stat-item {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8b7ab8;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b5b95;
+            margin-top: 5px;
+        }
+
+        .breathing-tips {
+            background: rgba(168, 216, 234, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #a8d8ea;
+        }
+
+        .tip-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #8b7ab8;
+            margin-bottom: 15px;
+        }
+
+        .tip-text {
+            color: #6b5b95;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .fade-in-delay {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .breathing-circle {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .breathing-text {
+                font-size: 1.5rem;
+            }
+            
+            .main-container {
+                padding: 25px;
+                margin: 20px 10px;
+            }
+            
+            .stat-item {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Header -->
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <i class="fas fa-heart"></i> Cuida Tu Mente
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">
+                                    <i class="fas fa-home"></i> Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#que-es">¿Qué es?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#autocuidado">Autocuidado</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="test.html">
+                                    <i class="fas fa-clipboard-check"></i> Test
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="herramientasDropdown" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-tools"></i> Herramientas
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="juegos.html">
+                                        <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="gratitud.html">
+                                        <i class="fas fa-feather-alt"></i> Diario de Gratitud
+                                    </a></li>
+                                    <li><a class="dropdown-item active" href="respiracion.html">
+                                        <i class="fas fa-lungs"></i> Respiración Guiada
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="mindfulness.html">
+                                        <i class="fas fa-eye"></i> Mindfulness Visual
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="afirmaciones.html">
+                                        <i class="fas fa-star"></i> Afirmaciones Positivas
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="altruista.html">
+                                        <i class="fas fa-hands-helping"></i> Actividades Altruistas
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="mental-health-chat-app/public/chat.html">
+                                        <i class="fas fa-comments"></i> Chat de Apoyo
+                                    </a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#recursos">
+                                    <i class="fas fa-phone-alt"></i> Recursos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container py-5">
+            <h1 class="main-title fade-in">
+                <i class="fas fa-wind"></i>
+                Respiración Consciente
+            </h1>
+            <p class="subtitle fade-in">
+                Encuentra la calma a través de la respiración. Esta técnica milenaria te ayudará a reducir el estrés, 
+                controlar la ansiedad y encontrar un momento de paz en tu día.
+            </p>
+
+            <div class="main-container fade-in-delay">
+                <div class="breathing-container">
+                    <!-- Círculo de respiración -->
+                    <div class="breathing-circle" id="breathingCircle">
+                        <div class="breathing-text" id="breathingText">
+                            Prepárate
+                        </div>
+                    </div>
+
+                    <!-- Instrucciones de fase -->
+                    <div class="phase-instruction" id="phaseInstruction">
+                        Haz clic en "Comenzar" cuando estés listo para empezar
+                    </div>
+
+                    <!-- Controles -->
+                    <div class="controls">
+                        <button class="breath-button" id="startBtn">
+                            <i class="fas fa-play"></i> Comenzar
+                        </button>
+                        <button class="breath-button" id="pauseBtn" style="display: none;">
+                            <i class="fas fa-pause"></i> Pausar
+                        </button>
+                        <button class="breath-button" id="resetBtn">
+                            <i class="fas fa-refresh"></i> Reiniciar
+                        </button>
+                    </div>
+
+                    <!-- Estadísticas de la sesión -->
+                    <div class="session-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="cycleCount">0</div>
+                            <div class="stat-label">Ciclos Completados</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="sessionTime">0:00</div>
+                            <div class="stat-label">Tiempo de Sesión</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="currentPhase">Parado</div>
+                            <div class="stat-label">Estado Actual</div>
+                        </div>
+                    </div>
+
+                    <!-- Consejos de respiración -->
+                    <div class="breathing-tips">
+                        <div class="tip-title">
+                            <i class="fas fa-lightbulb"></i> Consejos para una mejor práctica
+                        </div>
+                        <div class="tip-text">
+                            • <strong>Postura:</strong> Siéntate cómodamente con la espalda recta o acuéstate boca arriba
+                        </div>
+                        <div class="tip-text">
+                            • <strong>Entorno:</strong> Busca un lugar tranquilo donde no seas interrumpido
+                        </div>
+                        <div class="tip-text">
+                            • <strong>Respiración:</strong> Inhala por la nariz y exhala por la boca lentamente
+                        </div>
+                        <div class="tip-text">
+                            • <strong>Concentración:</strong> Enfócate solo en tu respiración, deja ir otros pensamientos
+                        </div>
+                        <div class="tip-text">
+                            • <strong>Regularidad:</strong> Practica diariamente, aunque sea por unos minutos
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección de Herramientas Relacionadas -->
+                <div class="container mt-5 mb-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div style="background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 40px; box-shadow: 0 15px 35px rgba(199, 184, 234, 0.15);">
+                                <h3 style="color: #8b7ab8; text-align: center; margin-bottom: 30px;">
+                                    <i class="fas fa-tools"></i> Otras herramientas que pueden ayudarte
+                                </h3>
+                                <div class="row g-3">
+                                    <div class="col-md-4 text-center">
+                                        <a href="mindfulness.html" class="text-decoration-none">
+                                            <div style="background: linear-gradient(135deg, #c7b8ea, #a8d8ea); border-radius: 15px; padding: 20px; color: white; transition: all 0.3s ease;" 
+                                                 onmouseover="this.style.transform='scale(1.05)'" 
+                                                 onmouseout="this.style.transform='scale(1)'">
+                                                <i class="fas fa-eye fa-2x mb-2"></i>
+                                                <h5>Mindfulness Visual</h5>
+                                                <p style="font-size: 0.9rem; margin: 0;">Meditación con visualización</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <a href="afirmaciones.html" class="text-decoration-none">
+                                            <div style="background: linear-gradient(135deg, #ffb3d9, #ffd3a5); border-radius: 15px; padding: 20px; color: white; transition: all 0.3s ease;" 
+                                                 onmouseover="this.style.transform='scale(1.05)'" 
+                                                 onmouseout="this.style.transform='scale(1)'">
+                                                <i class="fas fa-star fa-2x mb-2"></i>
+                                                <h5>Afirmaciones Positivas</h5>
+                                                <p style="font-size: 0.9rem; margin: 0;">Fortalece tu autoestima</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <a href="mental-health-chat-app/public/chat.html" class="text-decoration-none">
+                                            <div style="background: linear-gradient(135deg, #a8d8ea, #c7b8ea); border-radius: 15px; padding: 20px; color: white; transition: all 0.3s ease;" 
+                                                 onmouseover="this.style.transform='scale(1.05)'" 
+                                                 onmouseout="this.style.transform='scale(1)'">
+                                                <i class="fas fa-comments fa-2x mb-2"></i>
+                                                <h5>Chat de Apoyo</h5>
+                                                <p style="font-size: 0.9rem; margin: 0;">Habla con nuestra IA especializada</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <!-- Botón Volver al Inicio -->
+                                <div class="text-center mt-4">
+                                    <a href="index.html" style="background: linear-gradient(135deg, #8b7ab8, #c7b8ea); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; display: inline-block; transition: all 0.3s ease; font-weight: 500;"
+                                       onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 25px rgba(139, 122, 184, 0.3)'"
+                                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                                        <i class="fas fa-home"></i> Volver al Inicio
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        console.log('🚀 Iniciando aplicación de respiración...');
+        
+        // Variables globales
+        let isBreathing = false;
+        let breathingTimer = null;
+        let sessionTimer = null;
+        let currentCycle = 0;
+        let sessionStartTime = null;
+        let currentPhaseState = 'stopped';
+        
+        // Configuración de tiempos (en milisegundos)
+        const INHALE_TIME = 4000;
+        const HOLD_INHALE_TIME = 2000;
+        const EXHALE_TIME = 6000;
+        const HOLD_EXHALE_TIME = 2000;
+        
+        // Elementos del DOM
+        let breathingCircle, breathingText, phaseInstruction;
+        let startBtn, pauseBtn, resetBtn;
+        let cycleCountElement, sessionTimeElement, currentPhaseElement;
+        
+        // Función para inicializar elementos
+        function initializeElements() {
+            breathingCircle = document.getElementById('breathingCircle');
+            breathingText = document.getElementById('breathingText');
+            phaseInstruction = document.getElementById('phaseInstruction');
+            startBtn = document.getElementById('startBtn');
+            pauseBtn = document.getElementById('pauseBtn');
+            resetBtn = document.getElementById('resetBtn');
+            cycleCountElement = document.getElementById('cycleCount');
+            sessionTimeElement = document.getElementById('sessionTime');
+            currentPhaseElement = document.getElementById('currentPhase');
+            
+            console.log('Elementos encontrados:', {
+                breathingCircle: !!breathingCircle,
+                breathingText: !!breathingText,
+                phaseInstruction: !!phaseInstruction,
+                startBtn: !!startBtn,
+                pauseBtn: !!pauseBtn,
+                resetBtn: !!resetBtn
+            });
+        }
+        
+        // Función para iniciar la respiración
+        function startBreathing() {
+            console.log('🟢 Iniciando respiración...');
+            
+            if (isBreathing) {
+                console.log('⚠️ Ya está en curso');
+                return;
+            }
+            
+            isBreathing = true;
+            sessionStartTime = Date.now();
+            
+            // Cambiar botones
+            startBtn.style.display = 'none';
+            pauseBtn.style.display = 'inline-block';
+            
+            // Iniciar timer de sesión
+            sessionTimer = setInterval(updateSessionTime, 1000);
+            
+            // Comenzar primer ciclo
+            startBreathingCycle();
+        }
+        
+        // Función para pausar la respiración
+        function pauseBreathing() {
+            console.log('⏸️ Pausando respiración...');
+            
+            isBreathing = false;
+            clearTimeout(breathingTimer);
+            clearInterval(sessionTimer);
+            
+            // Cambiar botones
+            startBtn.style.display = 'inline-block';
+            pauseBtn.style.display = 'none';
+            
+            // Resetear visual
+            breathingCircle.className = 'breathing-circle';
+            breathingText.textContent = 'Pausado';
+            phaseInstruction.textContent = 'Sesión pausada. Presiona "Comenzar" para continuar';
+            currentPhaseState = 'paused';
+            updateCurrentPhase();
+        }
+        
+        // Función para reiniciar la respiración
+        function resetBreathing() {
+            console.log('🔄 Reiniciando respiración...');
+            
+            // Parar todo
+            isBreathing = false;
+            clearTimeout(breathingTimer);
+            clearInterval(sessionTimer);
+            
+            // Resetear variables
+            currentCycle = 0;
+            sessionStartTime = null;
+            currentPhaseState = 'stopped';
+            
+            // Resetear UI
+            startBtn.style.display = 'inline-block';
+            pauseBtn.style.display = 'none';
+            
+            breathingCircle.className = 'breathing-circle';
+            breathingText.textContent = 'Prepárate';
+            phaseInstruction.textContent = 'Haz clic en "Comenzar" cuando estés listo para empezar';
+            
+            updateStats();
+        }
+        
+        // Función para ejecutar un ciclo de respiración
+        function startBreathingCycle() {
+            if (!isBreathing) return;
+            
+            console.log('🔄 Iniciando ciclo de respiración');
+            
+            // Fase 1: Inhalar
+            currentPhaseState = 'inhaling';
+            updateCurrentPhase();
+            breathingCircle.className = 'breathing-circle inhale';
+            breathingText.textContent = 'Inhala';
+            phaseInstruction.textContent = 'Inhala lenta y profundamente por la nariz...';
+            
+            breathingTimer = setTimeout(() => {
+                if (!isBreathing) return;
+                
+                // Fase 2: Mantener (inhalar)
+                currentPhaseState = 'holding_inhale';
+                updateCurrentPhase();
+                breathingText.textContent = 'Mantén';
+                phaseInstruction.textContent = 'Mantén el aire en tus pulmones...';
+                
+                breathingTimer = setTimeout(() => {
+                    if (!isBreathing) return;
+                    
+                    // Fase 3: Exhalar
+                    currentPhaseState = 'exhaling';
+                    updateCurrentPhase();
+                    breathingCircle.className = 'breathing-circle exhale';
+                    breathingText.textContent = 'Exhala';
+                    phaseInstruction.textContent = 'Exhala lentamente por la boca, libera toda la tensión...';
+                    
+                    breathingTimer = setTimeout(() => {
+                        if (!isBreathing) return;
+                        
+                        // Fase 4: Mantener (exhalar)
+                        currentPhaseState = 'holding_exhale';
+                        updateCurrentPhase();
+                        breathingText.textContent = 'Pausa';
+                        phaseInstruction.textContent = 'Mantén el vacío, siente la calma...';
+                        
+                        breathingTimer = setTimeout(() => {
+                            if (!isBreathing) return;
+                            
+                            // Completar ciclo
+                            currentCycle++;
+                            updateStats();
+                            
+                            // Mensaje de aliento cada 3 ciclos
+                            if (currentCycle % 3 === 0) {
+                                phaseInstruction.textContent = `¡Excelente! Has completado ${currentCycle} ciclos. Continúa respirando...`;
+                            }
+                            
+                            // Continuar con el siguiente ciclo
+                            startBreathingCycle();
+                            
+                        }, HOLD_EXHALE_TIME);
+                    }, EXHALE_TIME);
+                }, HOLD_INHALE_TIME);
+            }, INHALE_TIME);
+        }
+        
+        // Función para actualizar estadísticas
+        function updateStats() {
+            if (cycleCountElement) {
+                cycleCountElement.textContent = currentCycle;
+            }
+            updateSessionTime();
+        }
+        
+        // Función para actualizar fase actual
+        function updateCurrentPhase() {
+            if (!currentPhaseElement) return;
+            
+            const phaseNames = {
+                'stopped': 'Parado',
+                'paused': 'Pausado',
+                'inhaling': 'Inhalando',
+                'holding_inhale': 'Reteniendo',
+                'exhaling': 'Exhalando',
+                'holding_exhale': 'Pausa'
+            };
+            currentPhaseElement.textContent = phaseNames[currentPhaseState] || 'Parado';
+        }
+        
+        // Función para actualizar tiempo de sesión
+        function updateSessionTime() {
+            if (!sessionTimeElement) return;
+            
+            if (sessionStartTime) {
+                const elapsed = Math.floor((Date.now() - sessionStartTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                sessionTimeElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                sessionTimeElement.textContent = '0:00';
+            }
+        }
+        
+        // Función para agregar event listeners
+        function addEventListeners() {
+            console.log('🔗 Agregando event listeners...');
+            
+            if (startBtn) {
+                startBtn.addEventListener('click', startBreathing);
+                console.log('✅ Listener agregado a startBtn');
+            }
+            
+            if (pauseBtn) {
+                pauseBtn.addEventListener('click', pauseBreathing);
+                console.log('✅ Listener agregado a pauseBtn');
+            }
+            
+            if (resetBtn) {
+                resetBtn.addEventListener('click', resetBreathing);
+                console.log('✅ Listener agregado a resetBtn');
+            }
+            
+            // Evento de teclado para espacio
+            document.addEventListener('keydown', function(event) {
+                if (event.code === 'Space') {
+                    event.preventDefault();
+                    if (!isBreathing) {
+                        startBreathing();
+                    } else {
+                        pauseBreathing();
+                    }
+                }
+            });
+        }
+        
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 DOM cargado, inicializando...');
+            
+            // Inicializar elementos
+            initializeElements();
+            
+            // Verificar que los elementos existen
+            if (!startBtn || !pauseBtn || !resetBtn) {
+                console.error('❌ Error: No se encontraron todos los botones');
+                alert('Error: No se pudieron encontrar los botones. Por favor, recarga la página.');
+                return;
+            }
+            
+            // Agregar event listeners
+            addEventListeners();
+            
+            // Inicializar estadísticas
+            updateCurrentPhase();
+            updateStats();
+            
+            console.log('✅ Aplicación de respiración inicializada correctamente');
+            console.log('ℹ️ Puedes usar la barra espaciadora para iniciar/pausar');
+        });
+        
+        // Hacer funciones disponibles globalmente para debugging
+        window.breathingApp = {
+            start: startBreathing,
+            pause: pauseBreathing,
+            reset: resetBreathing,
+            isBreathing: () => isBreathing,
+            currentCycle: () => currentCycle
+        };
+        
+        console.log('✅ Script de respiración cargado completamente');
+    </script>
+</body>
+</html>

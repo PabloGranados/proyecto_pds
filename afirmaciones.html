@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afirmaciones Positivas - Cuida Tu Mente</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f8f3ff 0%, #fff5f8 50%, #f0f8ff 100%);
+            color: #4a4a4a;
+            min-height: 100vh;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background: #c7b8ea;
+            top: 10%;
+            left: 10%;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: #ffb3d9;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            background: #a8d8ea;
+            top: 40%;
+            left: 70%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(180deg); }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(199, 184, 234, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8b7ab8 !important;
+            text-shadow: 2px 2px 4px rgba(139, 122, 184, 0.2);
+        }
+
+        .navbar-nav .nav-link {
+            color: #6b5b95 !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 15px !important;
+            border-radius: 20px;
+            margin: 0 5px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: rgba(199, 184, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%);
+            color: white !important;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(139, 122, 184, 0.4);
+        }
+
+        .dropdown-menu {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(199, 184, 234, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(139, 122, 184, 0.2);
+            padding: 10px 5px;
+        }
+
+        .dropdown-item {
+            color: #6b5b95;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin: 2px 5px;
+            padding: 8px 15px;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(199, 184, 234, 0.2);
+            color: #8b7ab8;
+            transform: translateX(5px);
+        }
+
+        .dropdown-item.active {
+            background: linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%);
+            color: white;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            margin-right: 8px;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            color: #8b7ab8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #6b5b95;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(199, 184, 234, 0.2);
+        }
+
+        .affirmation-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .affirmation-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(199, 184, 234, 0.1) 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(199, 184, 234, 0.2);
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .affirmation-text {
+            font-size: 1.8rem;
+            color: #8b7ab8;
+            font-weight: 600;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .category-selector {
+            margin: 30px 0;
+        }
+
+        .category-btn {
+            background: rgba(199, 184, 234, 0.2);
+            color: #8b7ab8;
+            border: 2px solid rgba(199, 184, 234, 0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%);
+            color: white;
+            border-color: #8b7ab8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 122, 184, 0.3);
+        }
+
+        .action-buttons {
+            margin: 30px 0;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px 10px 0;
+            box-shadow: 0 5px 15px rgba(139, 122, 184, 0.3);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 122, 184, 0.4);
+        }
+
+        .action-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .stats-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px solid rgba(199, 184, 234, 0.3);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8b7ab8;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b5b95;
+            margin-top: 5px;
+        }
+
+        .favorite-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(139, 122, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .favorite-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(139, 122, 184, 0.2);
+        }
+
+        .favorite-text {
+            flex: 1;
+            color: #6b5b95;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .favorite-actions {
+            display: flex;
+            gap: 10px;
+            margin-left: 15px;
+        }
+
+        .favorite-btn {
+            background: rgba(139, 122, 184, 0.1);
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #8b7ab8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .favorite-btn:hover {
+            background: rgba(139, 122, 184, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .delete-btn {
+            background: rgba(255, 99, 132, 0.1);
+            color: #ff6384;
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 99, 132, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .fade-in-delay {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .affirmation-text {
+                font-size: 1.4rem;
+            }
+            
+            .main-container {
+                padding: 25px;
+                margin: 20px 10px;
+            }
+            
+            .action-btn {
+                font-size: 1rem;
+                padding: 12px 20px;
+                margin: 5px;
+            }
+
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Header -->
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <i class="fas fa-heart"></i> Cuida Tu Mente
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">
+                                    <i class="fas fa-home"></i> Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#que-es">¿Qué es?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#autocuidado">Autocuidado</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="test.html">
+                                    <i class="fas fa-clipboard-check"></i> Test
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="herramientasDropdown" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-tools"></i> Herramientas
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="juegos.html">
+                                        <i class="fas fa-gamepad"></i> Juegos Terapéuticos
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="gratitud.html">
+                                        <i class="fas fa-feather-alt"></i> Diario de Gratitud
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="respiracion.html">
+                                        <i class="fas fa-lungs"></i> Respiración Guiada
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="mindfulness.html">
+                                        <i class="fas fa-eye"></i> Mindfulness Visual
+                                    </a></li>
+                                    <li><a class="dropdown-item active" href="afirmaciones.html">
+                                        <i class="fas fa-star"></i> Afirmaciones Positivas
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="altruista.html">
+                                        <i class="fas fa-hands-helping"></i> Actividades Altruistas
+                                    </a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="mental-health-chat-app/public/chat.html">
+                                        <i class="fas fa-comments"></i> Chat de Apoyo
+                                    </a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#recursos">
+                                    <i class="fas fa-phone-alt"></i> Recursos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container py-5">
+            <h1 class="main-title fade-in">
+                <i class="fas fa-star"></i>
+                Afirmaciones Positivas
+            </h1>
+            <p class="subtitle fade-in">
+                Transforma tu diálogo interno con pensamientos que nutren tu alma. 
+                Las afirmaciones positivas son una herramienta poderosa para cultivar la autoestima, 
+                reducir la autocrítica y crear una mentalidad más saludable.
+            </p>
+
+            <div class="main-container fade-in-delay">
+                <div class="affirmation-container">
+                    <!-- Selector de categorías -->
+                    <div class="category-selector">
+                        <h4 style="color: #8b7ab8; margin-bottom: 20px;">
+                            <i class="fas fa-tags"></i> Elige una categoría
+                        </h4>
+                        <button class="btn category-btn active" id="generalBtn" onclick="changeCategory('general')">
+                            <i class="fas fa-heart"></i> General
+                        </button>
+                        <button class="btn category-btn" id="autoestimaBtn" onclick="changeCategory('autoestima')">
+                            <i class="fas fa-smile"></i> Autoestima
+                        </button>
+                        <button class="btn category-btn" id="ansiedadBtn" onclick="changeCategory('ansiedad')">
+                            <i class="fas fa-leaf"></i> Ansiedad
+                        </button>
+                        <button class="btn category-btn" id="confianzaBtn" onclick="changeCategory('confianza')">
+                            <i class="fas fa-mountain"></i> Confianza
+                        </button>
+                        <button class="btn category-btn" id="amorBtn" onclick="changeCategory('amor')">
+                            <i class="fas fa-heart-circle"></i> Amor Propio
+                        </button>
+                    </div>
+
+                    <!-- Tarjeta de afirmación -->
+                    <div class="affirmation-card" id="affirmationCard">
+                        <div class="affirmation-text" id="affirmationText">
+                            Haz clic en "Nueva Afirmación" para comenzar tu práctica
+                        </div>
+                    </div>
+
+                    <!-- Botones de acción -->
+                    <div class="action-buttons">
+                        <button class="action-btn" id="newBtn" onclick="getNewAffirmation()">
+                            <i class="fas fa-refresh"></i> Nueva Afirmación
+                        </button>
+                        <button class="action-btn" id="favoriteBtn" onclick="saveToFavorites()">
+                            <i class="fas fa-heart"></i> Guardar Favorita
+                        </button>
+                        <button class="action-btn" id="viewFavoritesBtn" onclick="toggleFavoritesView()">
+                            <i class="fas fa-list-heart"></i> Ver Favoritas
+                        </button>
+                    </div>
+
+                    <!-- Sección de favoritos -->
+                    <div id="favoritesSection" style="display: none; margin-top: 30px;">
+                        <div style="background: rgba(255, 193, 204, 0.1); border-radius: 20px; padding: 25px; border-left: 5px solid #ff8fa3;">
+                            <h4 style="color: #8b7ab8; margin-bottom: 20px; text-align: center;">
+                                <i class="fas fa-heart"></i> Mis Afirmaciones Favoritas
+                            </h4>
+                            <div id="favoritesList">
+                                <!-- Las afirmaciones favoritas aparecerán aquí -->
+                            </div>
+                            <div id="noFavoritesMessage" style="text-align: center; color: #6b5b95; font-style: italic; display: none;">
+                                <i class="fas fa-heart-broken"></i> Aún no tienes afirmaciones favoritas. ¡Comienza guardando algunas!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estadísticas -->
+                    <div class="stats-container">
+                        <h5 style="color: #8b7ab8; text-align: center; margin-bottom: 20px;">
+                            <i class="fas fa-chart-line"></i> Tu Progreso de Hoy
+                        </h5>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="todayCount">0</div>
+                                <div class="stat-label">Afirmaciones Hoy</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalCount">0</div>
+                                <div class="stat-label">Total Practicadas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="favoritesCount">0</div>
+                                <div class="stat-label">Favoritas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="streakCount">1</div>
+                                <div class="stat-label">Días Consecutivos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consejos -->
+                    <div style="background: rgba(168, 216, 234, 0.1); border-radius: 20px; padding: 25px; margin: 30px 0; border-left: 5px solid #a8d8ea;">
+                        <div style="font-size: 1.3rem; font-weight: 600; color: #8b7ab8; margin-bottom: 15px;">
+                            <i class="fas fa-lightbulb"></i> Consejos para una práctica efectiva
+                        </div>
+                        <div style="color: #6b5b95; line-height: 1.6; margin-bottom: 10px;">
+                            • <strong>Repite con convicción:</strong> Di la afirmación como si ya fuera verdad
+                        </div>
+                        <div style="color: #6b5b95; line-height: 1.6; margin-bottom: 10px;">
+                            • <strong>Visualiza:</strong> Imagina cómo te sentirías si la afirmación fuera completamente cierta
+                        </div>
+                        <div style="color: #6b5b95; line-height: 1.6; margin-bottom: 10px;">
+                            • <strong>Sé constante:</strong> Practica a diario, aunque sea por unos minutos
+                        </div>
+                        <div style="color: #6b5b95; line-height: 1.6; margin-bottom: 10px;">
+                            • <strong>Personaliza:</strong> Adapta las afirmaciones a tu situación personal
+                        </div>
+                        <div style="color: #6b5b95; line-height: 1.6;">
+                            • <strong>Ten paciencia:</strong> Los cambios en el pensamiento toman tiempo
+                        </div>
+                    </div>
+
+                    <!-- Navegación rápida -->
+                    <div class="text-center mt-5">
+                        <div style="background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 30px; box-shadow: 0 15px 35px rgba(199, 184, 234, 0.15);">
+                            <h4 style="color: #8b7ab8; margin-bottom: 20px;">
+                                <i class="fas fa-compass"></i> Explora más herramientas
+                            </h4>
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="respiracion.html" class="btn btn-outline-primary">
+                                    <i class="fas fa-lungs"></i> Respiración
+                                </a>
+                                <a href="mindfulness.html" class="btn btn-outline-success">
+                                    <i class="fas fa-eye"></i> Mindfulness
+                                </a>
+                                <a href="juegos.html" class="btn btn-outline-info">
+                                    <i class="fas fa-gamepad"></i> Más Juegos
+                                </a>
+                                <a href="index.html" class="btn btn-primary">
+                                    <i class="fas fa-home"></i> Volver al Inicio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Sistema de Progreso del Usuario -->
+    <script src="user-progress.js" onerror="console.warn('Sistema de progreso no disponible')"></script>
+    
+    <script>
+        // ==============================================
+        // AFIRMACIONES POSITIVAS - VERSIÓN ONCLICK INLINE
+        // ==============================================
+        
+        console.log('🌟 INICIANDO AFIRMACIONES POSITIVAS...');
+        
+        // Variables globales
+        var currentCategory = 'general';
+        var currentAffirmation = '';
+        var todayCount = 0;
+        var totalCount = 0;
+        var favorites = [];
+        var favoritesCount = 0;
+        var streakCount = 1;
+
+        // Base de datos de afirmaciones por categoría
+        var affirmations = {
+            general: [
+                "Soy valioso(a) tal como soy",
+                "Merezco amor y respeto",
+                "Tengo el poder de crear la vida que deseo",
+                "Cada día me vuelvo más fuerte y sabio(a)",
+                "Confío en mi capacidad para superar cualquier desafío",
+                "Soy digno(a) de todas las cosas buenas de la vida",
+                "Mi vida tiene propósito y significado",
+                "Acepto y abrazo quien soy completamente"
+            ],
+            autoestima: [
+                "Me amo y me acepto completamente",
+                "Soy suficiente exactamente como soy",
+                "Mi valor no depende de la opinión de otros",
+                "Celebro mis logros, grandes y pequeños",
+                "Soy único(a) y especial en mi propia manera",
+                "Confío en mis decisiones y juicio",
+                "Me trato con compasión y gentileza",
+                "Soy digno(a) de amor y felicidad"
+            ],
+            ansiedad: [
+                "Respiro profundamente y me siento en calma",
+                "Tengo el control sobre mis pensamientos",
+                "Este momento pasará, y yo estaré bien",
+                "Soy más fuerte que mis preocupaciones",
+                "Elijo la paz en lugar del miedo",
+                "Confío en mi capacidad para manejar cualquier situación",
+                "Estoy seguro(a) y protegido(a)",
+                "Me libero de pensamientos que no me sirven"
+            ],
+            confianza: [
+                "Confío en mi intuición y sabiduría interior",
+                "Tengo todo lo que necesito para tener éxito",
+                "Soy capaz de lograr mis metas",
+                "Cada desafío me hace más fuerte",
+                "Creo en mis habilidades y talentos",
+                "Tomo decisiones con seguridad y claridad",
+                "Soy valiente y decidido(a)",
+                "Mi confianza crece cada día"
+            ],
+            amor: [
+                "Me amo incondicionalmente",
+                "Soy mi mejor amigo(a) y aliado(a)",
+                "Merezco tratarme con bondad",
+                "Celebro mis cualidades únicas",
+                "Me perdono por mis errores pasados",
+                "Soy digno(a) de amor y cuidado",
+                "Honro mis necesidades y deseos",
+                "El amor fluye fácilmente en todas mis relaciones"
+            ]
+        };
+
+        // ==============================================
+        // FUNCIONES PRINCIPALES - ONCLICK INLINE
+        // ==============================================
+        
+        function changeCategory(category) {
+            console.log('📂 FUNCIÓN changeCategory() EJECUTADA para:', category);
+            
+            currentCategory = category;
+            
+            // Actualizar botones de categoría
+            var buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            
+            // Marcar el botón activo
+            var activeBtn = null;
+            if (category === 'general') activeBtn = document.getElementById('generalBtn');
+            else if (category === 'autoestima') activeBtn = document.getElementById('autoestimaBtn');
+            else if (category === 'ansiedad') activeBtn = document.getElementById('ansiedadBtn');
+            else if (category === 'confianza') activeBtn = document.getElementById('confianzaBtn');
+            else if (category === 'amor') activeBtn = document.getElementById('amorBtn');
+            
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                console.log('✅ Botón activo actualizado');
+            }
+            
+            // Obtener nueva afirmación de la categoría
+            getNewAffirmation();
+            
+            console.log('✅ Categoría cambiada correctamente');
+        }
+
+        function getNewAffirmation() {
+            console.log('🔄 FUNCIÓN getNewAffirmation() EJECUTADA');
+            
+            var categoryAffirmations = affirmations[currentCategory];
+            if (categoryAffirmations && categoryAffirmations.length > 0) {
+                // Obtener afirmación aleatoria
+                var randomIndex = Math.floor(Math.random() * categoryAffirmations.length);
+                currentAffirmation = categoryAffirmations[randomIndex];
+                
+                console.log('💫 Nueva afirmación seleccionada:', currentAffirmation);
+                
+                // Mostrar afirmación con animación
+                var affirmationText = document.getElementById('affirmationText');
+                var affirmationCard = document.getElementById('affirmationCard');
+                
+                if (affirmationCard && affirmationText) {
+                    affirmationCard.style.transform = 'scale(0.95)';
+                    affirmationCard.style.opacity = '0.7';
+                    
+                    setTimeout(function() {
+                        affirmationText.textContent = currentAffirmation;
+                        affirmationCard.style.transform = 'scale(1)';
+                        affirmationCard.style.opacity = '1';
+                    }, 200);
+                    
+                    console.log('✅ Afirmación mostrada con animación');
+                }
+                
+                // Actualizar estadísticas
+                todayCount++;
+                totalCount++;
+                updateStats();
+                saveDataToLocalStorage();
+                
+                // Registrar actividad
+                registerActivity('affirmation_viewed');
+                
+                console.log('✅ Estadísticas actualizadas');
+            } else {
+                console.error('❌ No se encontraron afirmaciones para la categoría:', currentCategory);
+            }
+        }
+
+        function saveToFavorites() {
+            console.log('❤️ FUNCIÓN saveToFavorites() EJECUTADA');
+            
+            if (currentAffirmation && !favorites.includes(currentAffirmation)) {
+                favorites.push(currentAffirmation);
+                favoritesCount = favorites.length;
+                updateStats();
+                saveDataToLocalStorage();
+                updateFavoritesList();
+                
+                console.log('✅ Afirmación guardada en favoritos');
+                
+                // Mostrar confirmación visual
+                var favoriteButton = document.getElementById('favoriteBtn');
+                if (favoriteButton) {
+                    var originalHTML = favoriteButton.innerHTML;
+                    favoriteButton.innerHTML = '<i class="fas fa-check"></i> ¡Guardada!';
+                    favoriteButton.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                    
+                    setTimeout(function() {
+                        favoriteButton.innerHTML = originalHTML;
+                        favoriteButton.style.background = 'linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%)';
+                    }, 2000);
+                    
+                    console.log('✅ Confirmación visual mostrada');
+                }
+                
+                // Registrar favorito
+                registerActivity('affirmation_favorited');
+                
+                console.log('❤️ Afirmación guardada como favorita');
+            } else if (favorites.includes(currentAffirmation)) {
+                console.log('⚠️ Esta afirmación ya está en tus favoritos');
+                
+                // Mostrar mensaje de que ya está guardada
+                var favoriteButton = document.getElementById('favoriteBtn');
+                if (favoriteButton) {
+                    var originalHTML = favoriteButton.innerHTML;
+                    favoriteButton.innerHTML = '<i class="fas fa-info-circle"></i> Ya guardada';
+                    favoriteButton.style.background = 'linear-gradient(135deg, #ffc107, #fd7e14)';
+                    
+                    setTimeout(function() {
+                        favoriteButton.innerHTML = originalHTML;
+                        favoriteButton.style.background = 'linear-gradient(135deg, #c7b8ea 0%, #8b7ab8 100%)';
+                    }, 2000);
+                }
+            } else {
+                console.log('⚠️ No hay afirmación actual para guardar');
+            }
+        }
+
+        function toggleFavoritesView() {
+            console.log('👁️ FUNCIÓN toggleFavoritesView() EJECUTADA');
+            
+            var favoritesSection = document.getElementById('favoritesSection');
+            var viewButton = document.getElementById('viewFavoritesBtn');
+            
+            if (favoritesSection && viewButton) {
+                if (favoritesSection.style.display === 'none') {
+                    favoritesSection.style.display = 'block';
+                    viewButton.innerHTML = '<i class="fas fa-eye-slash"></i> Ocultar Favoritas';
+                    updateFavoritesList();
+                    console.log('👁️ Mostrando sección de favoritos');
+                } else {
+                    favoritesSection.style.display = 'none';
+                    viewButton.innerHTML = '<i class="fas fa-list-heart"></i> Ver Favoritas';
+                    console.log('👁️ Ocultando sección de favoritos');
+                }
+            }
+        }
+
+        function updateFavoritesList() {
+            console.log('📝 FUNCIÓN updateFavoritesList() EJECUTADA');
+            
+            var favoritesList = document.getElementById('favoritesList');
+            var noFavoritesMessage = document.getElementById('noFavoritesMessage');
+            
+            if (!favoritesList) return;
+            
+            // Limpiar lista actual
+            favoritesList.innerHTML = '';
+            
+            if (favorites.length === 0) {
+                if (noFavoritesMessage) {
+                    noFavoritesMessage.style.display = 'block';
+                }
+                console.log('📝 No hay favoritos para mostrar');
+                return;
+            }
+            
+            if (noFavoritesMessage) {
+                noFavoritesMessage.style.display = 'none';
+            }
+            
+            // Crear elementos para cada favorito
+            favorites.forEach(function(affirmation, index) {
+                var favoriteItem = document.createElement('div');
+                favoriteItem.className = 'favorite-item';
+                favoriteItem.innerHTML = 
+                    '<div class="favorite-text">' + affirmation + '</div>' +
+                    '<div class="favorite-actions">' +
+                        '<button class="favorite-btn" onclick="useFavoriteAffirmation(\'' + index + '\')">' +
+                            '<i class="fas fa-play"></i> Usar' +
+                        '</button>' +
+                        '<button class="favorite-btn delete-btn" onclick="removeFavorite(\'' + index + '\')">' +
+                            '<i class="fas fa-trash"></i> Eliminar' +
+                        '</button>' +
+                    '</div>';
+                
+                favoritesList.appendChild(favoriteItem);
+            });
+            
+            console.log('📝 Lista de favoritos actualizada con', favorites.length, 'elementos');
+        }
+
+        function useFavoriteAffirmation(index) {
+            console.log('▶️ FUNCIÓN useFavoriteAffirmation() EJECUTADA con índice:', index);
+            
+            if (favorites[index]) {
+                currentAffirmation = favorites[index];
+                
+                var affirmationText = document.getElementById('affirmationText');
+                if (affirmationText) {
+                    affirmationText.textContent = currentAffirmation;
+                }
+                
+                // Efectos visuales
+                var card = document.getElementById('affirmationCard');
+                if (card) {
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(function() {
+                        card.style.transform = 'scale(1)';
+                    }, 200);
+                }
+                
+                console.log('▶️ Afirmación favorita cargada:', currentAffirmation);
+            }
+        }
+
+        function removeFavorite(index) {
+            console.log('🗑️ FUNCIÓN removeFavorite() EJECUTADA con índice:', index);
+            
+            if (favorites[index]) {
+                var removedAffirmation = favorites[index];
+                favorites.splice(index, 1);
+                favoritesCount = favorites.length;
+                
+                updateStats();
+                saveDataToLocalStorage();
+                updateFavoritesList();
+                
+                console.log('🗑️ Favorito eliminado:', removedAffirmation);
+                
+                // Si no quedan favoritos, ocultar la sección
+                if (favorites.length === 0) {
+                    setTimeout(function() {
+                        toggleFavoritesView();
+                    }, 1000);
+                }
+            }
+        }
+
+        function updateStats() {
+            var todayEl = document.getElementById('todayCount');
+            var totalEl = document.getElementById('totalCount');
+            var favoritesEl = document.getElementById('favoritesCount');
+            var streakEl = document.getElementById('streakCount');
+            
+            if (todayEl) todayEl.textContent = todayCount;
+            if (totalEl) totalEl.textContent = totalCount;
+            if (favoritesEl) favoritesEl.textContent = favoritesCount;
+            if (streakEl) streakEl.textContent = streakCount;
+            
+            console.log('📊 Estadísticas actualizadas');
+        }
+
+        function registerActivity(activityType) {
+            try {
+                if (typeof UserProgress !== 'undefined') {
+                    var userProgress = new UserProgress();
+                    userProgress.completeActivity(activityType, {
+                        category: currentCategory,
+                        affirmation: currentAffirmation ? currentAffirmation.substring(0, 50) + '...' : '',
+                        timestamp: new Date().toISOString(),
+                        todayCount: todayCount
+                    });
+                    console.log('✅ Actividad registrada:', activityType);
+                }
+            } catch (error) {
+                console.log('ℹ️ No se pudo registrar la actividad');
+            }
+        }
+
+        function saveDataToLocalStorage() {
+            try {
+                var data = {
+                    todayCount: todayCount,
+                    totalCount: totalCount,
+                    favorites: favorites,
+                    favoritesCount: favoritesCount,
+                    streakCount: streakCount,
+                    lastDate: new Date().toDateString(),
+                    version: '2.0' // Para futuras migraciones
+                };
+                localStorage.setItem('affirmationsData', JSON.stringify(data));
+                console.log('💾 Datos guardados en localStorage:', {
+                    favoritos: favorites.length,
+                    hoy: todayCount,
+                    total: totalCount
+                });
+            } catch (error) {
+                console.log('⚠️ No se pudieron guardar los datos:', error);
+            }
+        }
+
+        function loadDataFromLocalStorage() {
+            try {
+                var saved = localStorage.getItem('affirmationsData');
+                if (saved) {
+                    var data = JSON.parse(saved);
+                    var today = new Date().toDateString();
+                    
+                    // Resetear contador diario si es un nuevo día
+                    if (data.lastDate === today) {
+                        todayCount = data.todayCount || 0;
+                    } else {
+                        todayCount = 0;
+                        // Incrementar racha si fue ayer, sino resetear
+                        var yesterday = new Date();
+                        yesterday.setDate(yesterday.getDate() - 1);
+                        if (data.lastDate === yesterday.toDateString()) {
+                            streakCount = (data.streakCount || 1) + 1;
+                        } else {
+                            streakCount = 1;
+                        }
+                    }
+                    
+                    totalCount = data.totalCount || 0;
+                    favorites = data.favorites || [];
+                    favoritesCount = favorites.length;
+                    
+                    updateStats();
+                    console.log('📂 Datos cargados desde localStorage:', {
+                        favoritos: favorites.length,
+                        hoy: todayCount,
+                        total: totalCount,
+                        racha: streakCount
+                    });
+                    
+                    // Si hay favoritos, mostrar el botón para verlos
+                    if (favorites.length > 0) {
+                        console.log('❤️ Se encontraron', favorites.length, 'afirmaciones favoritas');
+                    }
+                } else {
+                    console.log('📂 No se encontraron datos guardados previamente');
+                }
+            } catch (error) {
+                console.log('⚠️ No se pudieron cargar los datos guardados:', error);
+                // Inicializar con valores por defecto
+                favorites = [];
+                favoritesCount = 0;
+                todayCount = 0;
+                totalCount = 0;
+                streakCount = 1;
+            }
+        }
+
+        // ==============================================
+        // INICIALIZACIÓN
+        // ==============================================
+        
+        // Inicialización principal cuando el DOM esté listo
+        window.addEventListener('load', function() {
+            console.log('🎉 Página de afirmaciones cargada completamente');
+            
+            // Verificar que los elementos existen
+            var elements = ['affirmationText', 'affirmationCard', 'newBtn', 'favoriteBtn', 'viewFavoritesBtn'];
+            elements.forEach(function(id) {
+                var element = document.getElementById(id);
+                console.log('🔍 Verificando elemento', id + ':', element ? '✅ Encontrado' : '❌ No encontrado');
+            });
+            
+            // Cargar datos guardados
+            loadDataFromLocalStorage();
+            
+            // Control de teclado
+            document.addEventListener('keydown', function(event) {
+                if (event.code === 'Space') {
+                    event.preventDefault();
+                    getNewAffirmation();
+                } else if (event.code === 'KeyF') {
+                    event.preventDefault();
+                    saveToFavorites();
+                } else if (event.code === 'KeyV') {
+                    event.preventDefault();
+                    toggleFavoritesView();
+                }
+            });
+            
+            console.log('⌨️ Controles de teclado habilitados');
+            
+            // Sistema de progreso
+            try {
+                if (typeof UserProgress !== 'undefined') {
+                    var userProgress = new UserProgress();
+                    userProgress.visitPage('afirmaciones');
+                    console.log('✅ Progreso de usuario inicializado');
+                }
+            } catch (error) {
+                console.log('ℹ️ Sistema de progreso no disponible');
+            }
+            
+            console.log('🌟 Afirmaciones Positivas completamente inicializadas');
+            console.log('📋 Instrucciones:');
+            console.log('   - Presiona "Nueva Afirmación" o ESPACIO para nueva afirmación');
+            console.log('   - Presiona "Guardar Favorita" o F para guardar');
+            console.log('   - Presiona "Ver Favoritas" o V para ver favoritos');
+            
+            // Mostrar mensaje de bienvenida si hay favoritos
+            if (favorites.length > 0) {
+                console.log('❤️ Tienes', favorites.length, 'afirmaciones favoritas guardadas');
+            }
+        });
+        
+        // Guardar progreso al salir
+        window.addEventListener('beforeunload', function() {
+            saveDataToLocalStorage();
+            try {
+                if (typeof UserProgress !== 'undefined' && todayCount > 0) {
+                    var userProgress = new UserProgress();
+                    userProgress.completeActivity('affirmations_session_complete', {
+                        todayCount: todayCount,
+                        totalCount: totalCount,
+                        favoritesCount: favoritesCount,
+                        categories: [currentCategory]
+                    });
+                }
+            } catch (error) {
+                console.log('ℹ️ No se pudo guardar el progreso final');
+            }
+        });
+        
+        console.log('🌟 Afirmaciones Positivas con onclick cargado');
+    </script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
